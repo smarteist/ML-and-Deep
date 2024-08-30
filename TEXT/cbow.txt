@@ -1,0 +1,43 @@
+The Continuous Bag of Words (CBOW) method is another approach offered by Word2Vec for generating word vectors. Unlike Skip-Gram that predicts context words from a target word, CBOW predicts the target word from the context words.
+
+Below, I'll illustrate the CBOW method using the previous sentences:
+
+Sentence 1: "I love cats"
+Sentence 2: "I love dogs"
+
+Step 1: Tokenize
+
+For Sentence 1: ["I", "love", "cats"]
+For Sentence 2: ["I", "love", "dogs"]
+
+Step 2: Prepare Dataset for CBOW
+
+In CBOW, we define a target word and its surrounding context words within a certain window size. For a window size of 1:
+
+Sentence 1 Pairs: ([I, cats], love), ([love, I], love)
+Sentence 2 Pairs: ([I, dogs], love), ([love, I], love)
+
+Step 3: Create Indices and One-Hot Encodings
+
+We create an index for each unique word:
+
+{
+  "I": 0,
+  "love": 1,
+  "cats": 2,
+  "dogs": 3
+}
+
+We replace each word in these pairs by their corresponding one-hot vectors:
+
+For the pair ([I, cats], love), we now get ([1 0 0 0, 0 0 1 0], [0 1 0 0]).
+
+Step 4: Build a CBOW Model & Train
+
+In the CBOW model, we start with randomly initialized vectors, and the input is the one-hot vectors of the context words. For each context word, we produce an output vector. The outputs are averaged or summed to predict the target word. The aim is to adjust the model's weights to increase the probability of the target word given the input context words. This is typically done using gradient descent.
+
+Step 5: Use Word Vectors
+
+After training the model, we will get trained vectors (the weights of the model) for each word. As in Skip-Gram, similar words will have similar word vectors, and the proximity of words can be checked by using cosine similarity.
+
+As before, this process is oversimplified for comprehension, and effective Word2Vec training generally requires large amounts of data and computation.  

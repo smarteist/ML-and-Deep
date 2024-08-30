@@ -1,0 +1,64 @@
+To vectorize two small sentences using the skip-gram method, we need to follow these steps:
+
+Step 1: Define the Corpus
+First, we need to define our corpus, which is a collection of sentences or documents. Let's consider the following two sentences as our corpus:
+
+Sentence 1: "I love cats"
+Sentence 2: "I love dogs"
+
+Step 2: Tokenize the Sentences
+Next, we need to tokenize the sentences into individual words. Here is the tokenization for our example sentences:
+
+Sentence 1 Tokens: ["I", "love", "cats"]
+Sentence 2 Tokens: ["I", "love", "dogs"]
+
+Step 3: Create Context-Target Pairs
+In the skip-gram method, we create context-target pairs where the target is the center word, and the context words are the words surrounding the target. We define a window size to determine the number of context words on each side of the target.
+
+For example, with a window size of 1, the context-target pairs for Sentence 1 would be:
+
+Context-Target Pairs:
+- ("love", "I")
+- ("love", "cats")
+- ("I", "love")
+- ("I", "cats")
+- ("cats", "love")
+- ("cats", "I")
+
+Similarly, the context-target pairs for Sentence 2 with a window size of 1 would be:
+
+Context-Target Pairs:
+- ("love", "I")
+- ("love", "dogs")
+- ("I", "love")
+- ("I", "dogs")
+- ("dogs", "love")
+- ("dogs", "I")
+
+Step 4: Create One-Hot Encodings
+To represent words as vectors, we need to convert them into one-hot encodings. Each word will be represented as a vector with all zeros except for a single one at the index corresponding to the word's position in the vocabulary.
+
+For our example, let's assume the following vocabulary:
+
+Vocabulary: ["I", "love", "cats", "dogs"]
+
+The one-hot encodings for the words in Sentence 1 would be:
+
+"I" - [1, 0, 0, 0]
+"love" - [0, 1, 0, 0]
+"cats" - [0, 0, 1, 0]
+
+And for Sentence 2:
+
+"I" - [1, 0, 0, 0]
+"love" - [0, 1, 0, 0]
+"dogs" - [0, 0, 0, 1]
+
+Step 5: Train Skip-Gram Model
+Once we have our context-target pairs and one-hot encodings, we can train a skip-gram model using a technique like word2vec or GloVe. The model will learn to generate word embeddings that represent the meaning of words based on their context.
+
+Training a skip-gram model is beyond the scope of this step-by-step example. However, once the model is trained, it will generate word vectors that capture word similarities and relationships based on co-occurrence patterns in the corpus.
+
+These word vectors can then be used for various natural language processing tasks like word similarity calculation, text classification, and more.
+
+I hope this step-by-step example helps you understand how to vectorize two small sentences using the skip-gram method. Let me know if you have any further questions!  
